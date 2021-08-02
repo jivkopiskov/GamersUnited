@@ -26,5 +26,14 @@ namespace GamersUnited.Data
         public DbSet<Vote> Votes { get; set; }
 
         public DbSet<Category> Categories { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<Comment>().HasOne(x => x.Post).WithMany(x => x.Comments).OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Vote>().HasOne(x => x.Post).WithMany(x => x.Votes).OnDelete(DeleteBehavior.Restrict);
+        }
     }
 }

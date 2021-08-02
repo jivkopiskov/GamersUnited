@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GamersUnited.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210802200718_Add-Entities")]
-    partial class AddEntities
+    [Migration("20210802204748_remove-wrong-column")]
+    partial class removewrongcolumn
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -52,9 +52,6 @@ namespace GamersUnited.Data.Migrations
 
                     b.Property<string>("ParentCommentId")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ParentId")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PostId")
                         .IsRequired()
@@ -455,7 +452,7 @@ namespace GamersUnited.Data.Migrations
                     b.HasOne("GamersUnited.Data.Models.Post", "Post")
                         .WithMany("Comments")
                         .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("CreatedBy");
@@ -499,7 +496,7 @@ namespace GamersUnited.Data.Migrations
                     b.HasOne("GamersUnited.Data.Models.Post", "Post")
                         .WithMany("Votes")
                         .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Comment");

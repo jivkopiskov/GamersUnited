@@ -25,9 +25,9 @@ namespace GamersUnited.Data.Models
         [Required]
         public string CreatedById { get; set; }
 
-        public string ParentId { get; set; }
-
         public Comment ParentComment { get; set; }
+
+        public string ParentCommentId { get; set; }
 
         public ICollection<Vote> Votes { get; set; } = new HashSet<Vote>();
     }
