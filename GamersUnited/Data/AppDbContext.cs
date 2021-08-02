@@ -1,4 +1,5 @@
-﻿using GamersUnited.Models;
+﻿using GamersUnited.Data.Models;
+using GamersUnited.Models;
 using IdentityServer4.EntityFramework.Options;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
@@ -10,12 +11,20 @@ using System.Threading.Tasks;
 
 namespace GamersUnited.Data
 {
-    public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>
+    public class AppDbContext : ApiAuthorizationDbContext<AppUser>
     {
-        public ApplicationDbContext(
+        public AppDbContext(
             DbContextOptions options,
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
         {
         }
+
+        public DbSet<Post> Posts { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
+
+        public DbSet<Vote> Votes { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
     }
 }
