@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { PostsService as PostsService } from 'src/app/core/posts.service';
+import { ICategory } from '../Interfaces/ICategory';
 
 @Component({
   selector: 'app-add-new-post',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddNewPostComponent implements OnInit {
 
-  constructor() { }
+  title: string;
+  body: string;
+  category: string;
+  categories: ICategory[];
+  constructor(private postsService: PostsService) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.categories = await this.postsService.getAllCategories();
   }
 
+  onSubmit(form: NgForm) {
+    console.log(form);
+  }
 }

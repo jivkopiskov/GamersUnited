@@ -5,7 +5,7 @@ import { ICategory } from '../posts/Interfaces/ICategory';
 @Injectable({
   providedIn: 'root'
 })
-export class PostsServiceService {
+export class PostsService {
 
   constructor(private http: HttpClient) { }
 

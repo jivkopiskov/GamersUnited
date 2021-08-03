@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "12.1.4",
     "@angular/platform-server": "12.1.4",
     "@angular/router": "12.1.4",
+    "@tinymce/tinymce-angular": "^4.2.4",
     "bootstrap": "^4.3.1",
     "core-js": "^3.3.3",
     "jquery": "^3.6.0",

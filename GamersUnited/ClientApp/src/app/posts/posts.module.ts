@@ -7,6 +7,11 @@ import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { PostsListComponent } from './posts-list/posts-list.component';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input'
+import { MatSelectModule } from '@angular/material/select';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
   declarations: [
@@ -19,8 +24,13 @@ import { PostsListComponent } from './posts-list/posts-list.component';
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    EditorModule,
     MatButtonModule,
+    MatInputModule,
+    MatSelectModule,
     MatTableModule,
+    MatFormFieldModule,
     RouterModule.forChild([
       { path: 'all-categories', component: AllCategories, canActivate: [AuthorizeGuard] },
       { path: 'category/:categoryId', component: PostsListComponent, canActivate: [AuthorizeGuard] },
