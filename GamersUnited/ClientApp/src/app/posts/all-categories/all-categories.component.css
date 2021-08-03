@@ -1,0 +1,17 @@
+.test, table{
+    width: 100%;
+}
+
+  .mat-row:hover .mat-cell {
+    border-top:2px solid rgb(82, 82, 82);
+    border-bottom:2px solid rgb(82, 82, 82);
+    cursor: pointer;
+  }
+
+.mat-column-name{
+    width: 200px;
+}
+
+.space{
+    margin-top: 20px;
+}

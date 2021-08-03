@@ -1,0 +1,21 @@
+<button mat-raised-button color="primary" routerLink="/add-new-post">Add New Post</button>
+
+<div class="test">
+    <table mat-table [dataSource]="data">
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Category </th>
+            <td mat-cell *matCellDef="let category"> {{category.name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef> Description </th>
+            <td mat-cell *matCellDef="let category"> {{category.description}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row (click)="handleClick(row)" *matRowDef="let row; columns: columnsToDisplay"></tr>
+    </table>
+</div>
+
+<div class="space">
+<button mat-button>Test</button>
+</div>
