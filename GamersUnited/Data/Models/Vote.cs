@@ -8,7 +8,7 @@ namespace GamersUnited.Data.Models
     public class Vote
     {
         [Required]
-        public string Id { get; set; } = new Guid().ToString();
+        public string Id { get; set; } = Guid.NewGuid().ToString();
 
         public AppUser CreatedBy { get; set; }
 

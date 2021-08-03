@@ -15,8 +15,8 @@
             </mat-option>
         </mat-select>
     </mat-form-field>
-    <editor name="body" apiKey="no-api-key" cloudChannel="5" [disabled]="false" id="" [init]="{  }" initialValue="" [inline]="false"
-        plugins="" tagName="div" toolbar="" [(ngModel)]="body"></editor>
+    <editor name="body" [apiKey]="key" cloudChannel="5" [disabled]="false" id="" [init]="{ height: 400 }" initialValue="" [inline]="false"
+        plugins="" tagName="div" toolbar="" [(ngModel)]="body" ></editor>
     <hr />
     <button mat-raised-button color="primary" type="submit">Create</button>
 </form>

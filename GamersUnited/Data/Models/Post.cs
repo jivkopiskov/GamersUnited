@@ -10,7 +10,7 @@ namespace GamersUnited.Data.Models
     public class Post
     {
         [Required]
-        public string Id { get; set; } = new Guid().ToString();
+        public string Id { get; set; } = Guid.NewGuid().ToString();
 
         [Required]
         [MaxLength(50, ErrorMessage = "Title must be less than 50 characters")]
