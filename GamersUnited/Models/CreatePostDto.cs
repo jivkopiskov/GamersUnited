@@ -11,7 +11,7 @@ namespace GamersUnited.Models
         public string Id { get; set; } = Guid.NewGuid().ToString();
 
         [Required]
-        [MaxLength(50, ErrorMessage = "Title must be less than 50 characters")]
+        [MaxLength(100, ErrorMessage = "Title must be less than 50 characters")]
         public string Title { get; set; }
 
         public string Body { get; set; }

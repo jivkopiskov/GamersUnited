@@ -17,3 +17,8 @@ code {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* hack: apply css to mat expander component so posted by is at the end */
+.mat-content{
+  justify-content: space-between;
+}
