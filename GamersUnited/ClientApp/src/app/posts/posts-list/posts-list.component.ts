@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+import { PostsService } from 'src/app/core/posts.service';
+import { IPostSummary } from '../Interfaces/IPostSummary';
 
 @Component({
   selector: 'app-posts-list',
@@ -8,10 +11,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PostsListComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
+  public posts: IPostSummary[];
+  constructor(private route: ActivatedRoute, private postsService: PostsService) { }
 
   ngOnInit(): void {
-   this.route.params.subscribe(x => console.log(x));
+    this.route.params.pipe(
+      switchMap(x => this.postsService.getPostsByCategory(x.categoryId))
+    )
+      .subscribe(x => this.posts = x);
+
   }
 
 }

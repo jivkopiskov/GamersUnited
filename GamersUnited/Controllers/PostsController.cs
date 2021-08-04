@@ -4,6 +4,7 @@ using GamersUnited.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,22 @@ namespace GamersUnited.Controllers
             await this.dbContext.SaveChangesAsync();
             newPost.Id = dbPost.Id;
             return newPost;
+        }
+
+        [Route("category/{id}")]
+        public async Task<IEnumerable<PostSummaryDto>> GetAllPOotsByCategory(int id)
+        {
+            var posts =  await this.dbContext.Posts.Where(x => x.CategoryId == id).Select(x => new PostSummaryDto
+            {
+                Title = x.Title,
+                Body = x.Body,
+                CategoryId = x.CategoryId,
+                CreatedBy = x.CreatedBy.Email,
+                CommentsCount = x.Comments.Count()
+            })
+                .ToListAsync();
+
+            return posts;
         }
     }
 }

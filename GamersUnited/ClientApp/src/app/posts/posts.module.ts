@@ -33,7 +33,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
     MatFormFieldModule,
     RouterModule.forChild([
       { path: 'all-categories', component: AllCategories, canActivate: [AuthorizeGuard] },
-      { path: 'category/:categoryId', component: PostsListComponent, canActivate: [AuthorizeGuard] },
+      { path: 'posts/:categoryId', component: PostsListComponent, canActivate: [AuthorizeGuard] },
       { path: 'add-new-post', component: AddNewPostComponent, canActivate: [AuthorizeGuard] },
     ])
   ]

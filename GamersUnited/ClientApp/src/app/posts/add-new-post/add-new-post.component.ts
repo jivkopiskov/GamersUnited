@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { PostsService as PostsService } from 'src/app/core/posts.service';
 import { environment } from 'src/environments/environment';
 import { ICategory } from '../Interfaces/ICategory';
@@ -16,7 +17,7 @@ export class AddNewPostComponent implements OnInit {
   category: number;
   categories: ICategory[];
   key = environment.tinyMCEkey;
-  constructor(private postsService: PostsService) { }
+  constructor(private postsService: PostsService, private router: Router) { }
 
   async ngOnInit(): Promise<void> {
     this.categories = await this.postsService.getAllCategories();
@@ -27,7 +28,7 @@ export class AddNewPostComponent implements OnInit {
     if (form.valid) {
       var post = { id: null, body: this.body, title: this.title, categoryId: this.category }
       await this.postsService.createPost(post);
+      this.router.navigate(['posts', this.category])
     }
-    //TODO redirect to post (possibly upvote as well)
   }
 }

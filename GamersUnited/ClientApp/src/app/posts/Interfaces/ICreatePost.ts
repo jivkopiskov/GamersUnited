@@ -1,5 +1,5 @@
 
-export interface IPost {
+export interface ICreatePost {
     id: string;
     title: string;
     body: string;
