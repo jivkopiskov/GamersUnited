@@ -1,7 +1,6 @@
 
 .post{
     max-width: 940px;
-    margin: 15px;
 }
 
 .mat-expansion-panel {
@@ -26,4 +25,8 @@
 
 h3{
     margin: 16px 0 16px;
+}
+
+a{
+    margin-left: 5px;
 }

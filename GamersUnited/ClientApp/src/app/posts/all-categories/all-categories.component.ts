@@ -14,11 +14,16 @@ export class AllCategories implements OnInit {
   public columnsToDisplay = ['name', 'description'];
   public cateogries: ICategory[];
   public data: MatTableDataSource<ICategory>;
-  constructor(private postsService: PostsService, private router: Router) { }
+  public loading = true;
+  constructor(private postsService: PostsService, private router: Router) {
+    this.postsService.getAllCategories().subscribe(x => {
+      this.cateogries = x;
+      this.data = new MatTableDataSource(this.cateogries);
+      this.loading = false;
+    });
+  }
 
-  async ngOnInit() {
-    this.cateogries = await this.postsService.getAllCategories();
-    this.data = new MatTableDataSource(this.cateogries);
+  ngOnInit() {
   }
 
   handleClick(row: ICategory) {

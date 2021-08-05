@@ -19,15 +19,15 @@ export class AddNewPostComponent implements OnInit {
   key = environment.tinyMCEkey;
   constructor(private postsService: PostsService, private router: Router) { }
 
-  async ngOnInit(): Promise<void> {
-    this.categories = await this.postsService.getAllCategories();
+  ngOnInit() {
+    this.postsService.getAllCategories().subscribe(x => this.categories = x);
   }
 
   async onSubmit(form: NgForm) {
     console.log(form);
     if (form.valid) {
       var post = { id: null, body: this.body, title: this.title, categoryId: this.category }
-      await this.postsService.createPost(post);
+      await this.postsService.createPost(post).toPromise();
       this.router.navigate(['posts', this.category])
     }
   }

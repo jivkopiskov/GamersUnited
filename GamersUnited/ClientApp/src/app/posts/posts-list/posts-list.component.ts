@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SecurityContext } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
 import { PostsService } from 'src/app/core/posts.service';
 import { IPostSummary } from '../Interfaces/IPostSummary';
 
@@ -16,6 +16,7 @@ export class PostsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.pipe(
+      tap(() => this.posts = null),
       switchMap(x => this.postsService.getPostsByCategory(x.categoryId))
     )
       .subscribe(x => this.posts = x);
