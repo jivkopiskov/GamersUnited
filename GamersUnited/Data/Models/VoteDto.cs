@@ -11,5 +11,7 @@ namespace GamersUnited.Data.Models
         public VoteType Vote { get; set; }
 
         public string PostId { get; set; }
+
+        public string CommentId { get; set; }
     }
 }

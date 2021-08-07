@@ -1,0 +1,49 @@
+mat-card{
+    padding: 5px;
+}
+
+img{
+    margin-left: 5px;
+}
+
+.time{
+    margin-right: 5px;
+}
+
+.comment{
+    max-width: 940px;
+    margin-bottom: 20px;
+}
+
+.flex-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    background-color: rgb(129, 127, 255);
+    margin: 0 -5px;
+    color:aliceblue;
+}
+
+.mat-card-subtitle {
+    color: inherit;
+}
+
+.content{
+    margin: 10px;
+}
+
+.username{
+    margin-left: 15px;
+    font-size: 10;
+}
+
+.mat-card-subtitle{
+    margin-top: 16px;
+}
+
+.votes{
+    border-top: 1px solid black;
+}
+
+

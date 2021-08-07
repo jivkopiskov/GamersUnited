@@ -1,0 +1,17 @@
+<div class="post">
+    <mat-accordion class="post">
+        <mat-expansion-panel [expanded]="expanded">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <h2> {{post.title}}</h2>
+                </mat-panel-title>
+                <mat-panel-description>
+                    <h3>Posted by {{post.createdBy}}</h3>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p [innerHTML]="post.body"></p>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <app-votes [vote]="post.vote" [votesCount]="post.votesScore" [postId]="post.id"></app-votes>
+    <a *ngIf="showCommentsCount" [routerLink]="['/post', post.id]">Comments({{post.commentsCount}})</a>
+</div>

@@ -1,0 +1,9 @@
+<p>Please be civil and respect each other!</p>
+
+<editor #edit="ngModel" name="body" [apiKey]="key" cloudChannel="5" [disabled]="false" id="" [init]="{ height: 400 }" initialValue="" [inline]="false"
+plugins="" tagName="div" toolbar="" ngModel></editor>
+
+<div mat-dialog-actions>
+    <button mat-button color="warn" (click)="onNoClick()">Cancel</button>
+    <button mat-button color="primary" [mat-dialog-close]="edit.value" cdkFocusInitial>Send</button>
+  </div>

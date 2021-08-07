@@ -11,13 +11,18 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input'
 import { MatSelectModule } from '@angular/material/select';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatIconModule} from '@angular/material/icon';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { VotesComponent } from './votes/votes.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { SharedModule } from '../shared/shared.module';
+import { PostSummaryComponent } from './post-summary/post-summary.component';
+import { CommentComponent } from './comment/comment.component';
+import { AddCommentComponent } from './add-comment/add-comment.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,10 @@ import { SharedModule } from '../shared/shared.module';
     AddNewPostComponent,
     PostsListComponent,
     VotesComponent,
-    PostDetailsComponent
+    PostDetailsComponent,
+    PostSummaryComponent,
+    CommentComponent,
+    AddCommentComponent
   ],
   exports: [
     AllCategories,
@@ -37,6 +45,8 @@ import { SharedModule } from '../shared/shared.module';
     EditorModule,
     HttpClientModule,
     MatButtonModule,
+    MatCardModule,
+    MatDialogModule,
     MatExpansionModule,
     MatInputModule,
     MatSelectModule,

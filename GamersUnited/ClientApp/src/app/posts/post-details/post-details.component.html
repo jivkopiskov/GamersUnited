@@ -1,1 +1,17 @@
 <p>post-details works!</p>
+
+
+<app-post-summary *ngIf="post; else test;" [post]="post" [expanded]="true" [showCommentsCount]="false">
+
+</app-post-summary>
+
+
+<h2>Comments <button mat-raised-button color="primary" (click)="openDialog()">Add Comment</button> </h2>
+
+<ng-container *ngIf="!loadingComments; else test">
+    <app-comment *ngFor="let comment of comments" [comment]="comment"></app-comment>
+</ng-container>
+
+<ng-template #test>
+    <app-loader></app-loader>
+</ng-template>

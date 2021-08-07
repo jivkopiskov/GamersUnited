@@ -1,0 +1,15 @@
+<mat-card mat class="comment">
+    <div class="flex-container">
+        <div mat-card-subtitle>
+            <img src="https://static.vecteezy.com/system/resources/previews/002/318/271/non_2x/user-profile-icon-free-vector.jpg"
+                mat-card-avatar />
+            <span class="username">{{comment.createdBy}}</span>
+        </div>
+        <div class="time"> Created at: <b>{{ comment.createdAt.toUTCString()}}</b></div>
+    </div>
+    <div mat-card-content class="content" [innerHTML]="comment.text"> </div>
+    <div class="votes">
+        <app-votes [vote]="comment.vote" [votesCount]="comment.votesScore" [postId]="comment.postId"
+            [commentId]="comment.id"></app-votes>
+    </div>
+</mat-card>

@@ -17,6 +17,8 @@ export class VotesComponent implements OnInit {
   public votesCount: number
   @Input()
   public postId: string;
+  @Input()
+  public commentId: string;
 
   upvoteDisabled: boolean;
   downvoteDisabled: boolean;
@@ -29,8 +31,8 @@ export class VotesComponent implements OnInit {
   }
 
   async upvote() {
-    await this.postsService.votePost(this.postId, VoteType.upvote).toPromise();
-      this.upvoteDisabled = !this.upvoteDisabled;
+    await this.postsService.vote(this.postId, this.commentId, VoteType.upvote).toPromise();
+    this.upvoteDisabled = !this.upvoteDisabled;
     if (this.upvoteDisabled) {
       this.votesCount += 1;
     } else {
@@ -43,7 +45,7 @@ export class VotesComponent implements OnInit {
   }
 
   async downvote() {
-    await this.postsService.votePost(this.postId, VoteType.downvote).toPromise();
+    await this.postsService.vote(this.postId, this.commentId, VoteType.downvote).toPromise();
     this.downvoteDisabled = !this.downvoteDisabled;
     if (this.downvoteDisabled) {
       this.votesCount -= 1;

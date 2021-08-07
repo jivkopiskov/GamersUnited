@@ -20,7 +20,6 @@ export class PostsListComponent implements OnInit {
       switchMap(x => this.postsService.getPostsByCategory(x.categoryId))
     )
       .subscribe(x => this.posts = x);
-
   }
 
 }

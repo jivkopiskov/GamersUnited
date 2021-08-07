@@ -1,32 +1,4 @@
-
-.post{
-    max-width: 940px;
-}
-
-.mat-expansion-panel {
-    height: auto;
-}
-
-.mat-expansion-panel-header{
-    height: auto;
-    justify-content: space-between;
-}
-
-.mat-expansion-panel-header-title{
-    flex-grow: 1;
-    max-width: 580px;
-
-  }
-
-  .mat-expansion-panel-header-description {
-    flex-grow: 0;
-    align-items: center;
-}
-
 h3{
     margin: 16px 0 16px;
 }
 
-a{
-    margin-left: 5px;
-}
