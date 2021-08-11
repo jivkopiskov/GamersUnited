@@ -6,7 +6,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { RouterModule } from '@angular/router';
 import { ApplicationPaths } from './api-authorization.constants';
 import { HttpClientModule } from '@angular/common/http';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { ForbidAuthorized } from './authorize.guard';
 
 @NgModule({
   imports: [
@@ -14,9 +14,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
     HttpClientModule,
     RouterModule.forChild(
       [
-        { path: ApplicationPaths.Register, component: LoginComponent },
-        { path: ApplicationPaths.Profile, component: LoginComponent },
-        { path: ApplicationPaths.Login, component: LoginComponent },
+        { path: ApplicationPaths.Register, component: LoginComponent, canActivate: [ForbidAuthorized] },
+        { path: ApplicationPaths.Profile, component: LoginComponent, canActivate: [ForbidAuthorized] },
+        { path: ApplicationPaths.Login, component: LoginComponent, canActivate: [ForbidAuthorized] },
         { path: ApplicationPaths.LoginFailed, component: LoginComponent },
         { path: ApplicationPaths.LoginCallback, component: LoginComponent },
         { path: ApplicationPaths.LogOut, component: LogoutComponent },
