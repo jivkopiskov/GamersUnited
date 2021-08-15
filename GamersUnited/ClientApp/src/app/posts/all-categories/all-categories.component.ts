@@ -28,7 +28,7 @@ export class AllCategories implements OnInit {
 
   handleClick(row: ICategory) {
     if (row && row.id) {
-      this.router.navigate(['/posts', row.id])
+      this.router.navigate(['/posts', row.id], { queryParams: { page: 0 } })
     }
   }
 

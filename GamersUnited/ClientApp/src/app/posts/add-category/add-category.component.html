@@ -1,0 +1,18 @@
+<h3>Create new category</h3>
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <mat-form-field class="name" appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput name="name" [(ngModel)]="name" [maxlength]="20" [minlength]="3">
+    </mat-form-field>
+    <span *ngIf="f.controls.name.errors" class="error">Name must be between 3 and 20 characters</span>
+    <span *ngIf="nameExists" class="error">Category name already exists</span>
+    <mat-form-field class="description" appearance="fill">
+        <mat-label>Description</mat-label>
+        <input matInput name="description" [(ngModel)]="description" [maxlength]="50" [minlength]="3">
+    </mat-form-field>
+    <span *ngIf="f.controls.name.errors" class="error">Description must be between 3 and 50 characters</span>
+
+    <button mat-raised-button color="primary" type="submit">Create</button>
+</form>
+

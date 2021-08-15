@@ -28,7 +28,7 @@ export class AddNewPostComponent implements OnInit {
     if (form.valid) {
       var post = { id: null, body: this.body, title: this.title, categoryId: this.category }
       await this.postsService.createPost(post).toPromise();
-      this.router.navigate(['posts', this.category])
+      this.router.navigate(['posts', this.category], { queryParams: { page: 0 } })
     }
   }
 }

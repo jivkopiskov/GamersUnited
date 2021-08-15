@@ -14,6 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { HttpClientModule } from '@angular/common/http';
@@ -23,6 +24,7 @@ import { SharedModule } from '../shared/shared.module';
 import { PostSummaryComponent } from './post-summary/post-summary.component';
 import { CommentComponent } from './comment/comment.component';
 import { AddCommentComponent } from './add-comment/add-comment.component';
+import { AddCategoryComponent } from './add-category/add-category.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { AddCommentComponent } from './add-comment/add-comment.component';
     PostDetailsComponent,
     PostSummaryComponent,
     CommentComponent,
-    AddCommentComponent
+    AddCommentComponent,
+    AddCategoryComponent
   ],
   exports: [
     AllCategories,
@@ -50,6 +53,7 @@ import { AddCommentComponent } from './add-comment/add-comment.component';
     MatExpansionModule,
     MatInputModule,
     MatSelectModule,
+    MatPaginatorModule,
     MatTableModule,
     MatFormFieldModule,
     MatIconModule,
@@ -58,6 +62,7 @@ import { AddCommentComponent } from './add-comment/add-comment.component';
       { path: 'posts/:categoryId', component: PostsListComponent, canActivate: [AuthorizeGuard] },
       { path: 'add-new-post', component: AddNewPostComponent, canActivate: [AuthorizeGuard] },
       { path: 'post/:postId', component: PostDetailsComponent, canActivate: [AuthorizeGuard] },
+      { path: 'add-new-category', component: AddCategoryComponent, canActivate: [AuthorizeGuard] },
     ])
   ]
 })

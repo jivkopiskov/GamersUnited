@@ -1,5 +1,6 @@
 <ng-container *ngIf="!loading; else loader;">
-    <button mat-raised-button color="primary" routerLink="/add-new-post">Add New Post</button>
+    <div><button mat-raised-button color="primary" routerLink="/add-new-category">Add New Category</button> </div>
+
     <div class="test">
         <table mat-table [dataSource]="data">
             <ng-container matColumnDef="name">

@@ -22,3 +22,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-content{
   justify-content: space-between;
 }
+
+.error{
+  color: red;
+}

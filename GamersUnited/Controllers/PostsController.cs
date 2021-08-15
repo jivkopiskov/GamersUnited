@@ -85,6 +85,23 @@ namespace GamersUnited.Controllers
         }
 
         [Authorize]
+        [HttpPost]
+        [Route("category")]
+        public async Task<Category> AddCategory(Category newCategory)
+        {
+            var userId = GetUserId();
+            var existingCategory = this.dbContext.Categories.FirstOrDefault(x => x.Name.ToUpper() == newCategory.Name.ToUpper());
+            if (existingCategory != null)
+            {
+                throw new InvalidOperationException();
+            }
+            var category = new Category() { Name = newCategory.Name, Description = newCategory.Description };
+            await this.dbContext.Categories.AddAsync(category);
+            await this.dbContext.SaveChangesAsync();
+            return category;
+        }
+
+        [Authorize]
         [Route("votes")]
         [HttpPost]
         public async Task VotePost(VoteDto voteDto)
@@ -130,11 +147,18 @@ namespace GamersUnited.Controllers
             return post;
         }
 
+        [Route("category-count/{id}")]
+        public async Task<int> GetPostsCount(int id)
+        {
+            return await this.dbContext.Posts.Where(x => x.CategoryId == id).CountAsync();
+
+        }
+
         [Route("category/{id}")]
-        public async Task<IEnumerable<PostSummaryDto>> GetAllPOotsByCategory(int id)
+        public async Task<IEnumerable<PostSummaryDto>> GetAllPOotsByCategory(int id, int page)
         {
             var userId = GetUserId();
-            var posts = await this.dbContext.Posts.Where(x => x.CategoryId == id).Select(x => new PostSummaryDto
+            var posts = await this.dbContext.Posts.Where(x => x.CategoryId == id).OrderByDescending(x => x.CreatedAt).Skip(page * 10).Take(10).Select(x => new PostSummaryDto
             {
                 Id = x.Id,
                 Title = x.Title,

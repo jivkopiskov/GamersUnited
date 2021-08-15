@@ -23,14 +23,18 @@ export class PostsService {
     return this.http.post<ICreatePost>(`${endpointUrl}`, post);
   }
 
-  getPostsByCategory(id: number): Observable<IPostSummary[]> {
-    return this.http.get<IPostSummary[]>(`${endpointUrl}/category/${id}`);
+  getPostsByCategory(id: number, page = 0): Observable<IPostSummary[]> {
+    return this.http.get<IPostSummary[]>(`${endpointUrl}/category/${id}?page=${page}`);
   }
 
   getPost(id: string): Observable<IPostSummary> {
     return this.http.get<IPostSummary>(`${endpointUrl}/${id}`);
   }
 
+  getPostsCount(categoryId: number){
+    return this.http.get<number>(`${endpointUrl}/category-count/${categoryId}`);
+  }
+  
   getComments(id: string): Observable<IComment[]> {
     return this.http.get<IComment[]>(`${endpointUrl}/comments/${id}`);
   }
@@ -38,6 +42,11 @@ export class PostsService {
   addComment(id: string, comment: string) {
     const payload = { comment };
     return this.http.post<IComment>(`${endpointUrl}/comments/${id}`, payload);
+  }
+
+  addCategory(name: string, description: string) {
+    const payload = { name, description };
+    return this.http.post<ICategory>(`${endpointUrl}/category`, payload);
   }
 
   vote(postId: string, commentId: string, voteType: VoteType) {

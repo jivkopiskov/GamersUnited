@@ -1,12 +1,16 @@
 <ng-container *ngIf="posts; else loader;">
-    <div><button mat-raised-button color="primary" routerLink="/add-new-post">Add New Post</button> </div>
-
-    <h3> Recent posts in {{posts[0]?.categoryName}} </h3>
     <div class="container">
+        <div><button mat-raised-button color="primary" routerLink="/add-new-post">Add New Post</button> </div>
+        <h3 *ngIf="!posts[0]?.categoryName"> No posts yet. Be the first one to post by clicking <a
+            routerLink="/add-new-post">here</a></h3>
+        <h2 *ngIf="posts[0]?.categoryName"> Recent posts in {{posts[0]?.categoryName}} </h2>
         <ng-container *ngFor="let post of posts">
             <app-post-summary [post]="post"></app-post-summary>
         </ng-container>
+        <mat-paginator (page)="handlePageEvent($event)" [length]="lenght" [pageIndex]="pageIndex" [pageSize]="10" aria-label="Select page">
+        </mat-paginator>
     </div>
+
 </ng-container>
 <ng-template #loader>
     <app-loader></app-loader>
